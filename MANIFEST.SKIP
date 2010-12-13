@@ -1,0 +1,9 @@
+.git
+.gitignore
+Debian_CPANTS.txt
+MANIFEST.bak
+cover_db/
+^Makefile$
+^blib
+^pm_to_blib
+
