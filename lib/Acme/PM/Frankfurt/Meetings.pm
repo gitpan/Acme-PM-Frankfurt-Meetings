@@ -12,12 +12,12 @@ use DateTime;
 use DateTime::Event::Recurrence;
 
 #################################################
-## Every first Tuesday 7 pm (19 Uhr)
+## Every first Tuesday 7.30 pm (19:30 Uhr)
 ##################################################
-use constant DAYS  => 2;    # Tuesday
-use constant WEEKS => 1;    # First Week
-use constant HOURS => 19;
-use constant WEEK_START_DAY => '1tu';
+use constant DAYS           => 2;          # Tuesday
+use constant WEEKS          => 1;          # First Week
+use constant HOURS          => '19.50';    # 19:30 7.30pm
+use constant WEEK_START_DAY => '1tu';      # First Tuesday of the Month
 
 =head1 NAME
 
@@ -29,17 +29,21 @@ Version 0.11
 
 =cut
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 =head1 SYNOPSIS
 
+    use strict;
+
+    use warnings;
+
     use Acme::PM::Frankfurt::Meetings qw/next_meeting/;
 
-	print "Next Frankfurt.pm Meeting: ", next_meeting(1) , "\n";
+    print "Next Frankfurt.pm Meeting: ", next_meeting(1) , "\n";
 
-	print "Next 3  Frankfurt.pm Meetings:\n";
+    print "Next 3  Frankfurt.pm Meetings:\n";
 
-	print join("\n", next_meeting(3) ), "\n";
+    print join("\n", next_meeting(3) ), "\n";
 
 
 =head1 SUBROUTINES/METHODS
@@ -70,7 +74,7 @@ sub next_meeting {
     map { $dt = _next_meeting_dt($dt) } ( 1 .. $count );
 }
 
-=head2 __next_meeting_dt
+=head2 _next_meeting_dt
 
 Internal only - computes the next set
 
@@ -79,9 +83,9 @@ Internal only - computes the next set
 sub _next_meeting_dt {
     my $dt          = shift;
     my $monthly_set = DateTime::Event::Recurrence->monthly(
-        days  => DAYS,
-        weeks => WEEKS,
-        hours => HOURS,
+        days           => DAYS,
+        weeks          => WEEKS,
+        hours          => HOURS,
         week_start_day => WEEK_START_DAY,
     );
     my $dt_next = $monthly_set->next($dt);
@@ -91,9 +95,9 @@ sub _next_meeting_dt {
 
 =over 4
 
-=item *   DateTime L<http://search.cpan.org/perldoc?DateTime>
+=item * DateTime L<http://search.cpan.org/perldoc?DateTime>
 
-=item *   DateTime::Event::Recurrence L<http://search.cpan.org/perldoc?DateTime::Event::Recurrence>
+=item * DateTime::Event::Recurrence L<http://search.cpan.org/perldoc?DateTime::Event::Recurrence>
 
 =back
 
@@ -148,7 +152,7 @@ Heavily inspired by Acme::PM::Berlin::Meetings L<http://search.cpan.org/perldoc?
 
 =over 4
 
-=item  Frankfurt.pm L<http://www.frankfurt-pm.org/>
+=item *  Frankfurt.pm L<http://www.frankfurt-pm.org/>
 
 =back 
 
