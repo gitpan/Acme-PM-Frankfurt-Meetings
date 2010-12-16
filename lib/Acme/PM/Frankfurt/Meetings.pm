@@ -17,6 +17,7 @@ use DateTime::Event::Recurrence;
 use constant DAYS  => 2;    # Tuesday
 use constant WEEKS => 1;    # First Week
 use constant HOURS => 19;
+use constant WEEK_START_DAY => '1tu';
 
 =head1 NAME
 
@@ -24,11 +25,11 @@ Acme::PM::Frankfurt::Meetings - get the next date of the Frankfurt PM meeting
 
 =head1 VERSION
 
-Version 0.1
+Version 0.11
 
 =cut
 
-our $VERSION = '0.1';
+our $VERSION = '0.11';
 
 =head1 SYNOPSIS
 
@@ -80,7 +81,8 @@ sub _next_meeting_dt {
     my $monthly_set = DateTime::Event::Recurrence->monthly(
         days  => DAYS,
         weeks => WEEKS,
-        hours => HOURS
+        hours => HOURS,
+        week_start_day => WEEK_START_DAY,
     );
     my $dt_next = $monthly_set->next($dt);
 }
