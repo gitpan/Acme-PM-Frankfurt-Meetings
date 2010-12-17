@@ -1,5 +1,12 @@
 Revision history for Acme-PM-Frankfurt-Meetings
 
+0.13   2010/12/17/time
+       RTFM
+       -use constant HOURS          => '19.50';
+
+       +use constant HOURS          => '19';    
+       +use constant MINUTES        => '30';   
+
 0.12   2010/12/16/time
        Correct Time (7.30 pm) 
 

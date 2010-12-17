@@ -16,20 +16,21 @@ use DateTime::Event::Recurrence;
 ##################################################
 use constant DAYS           => 2;          # Tuesday
 use constant WEEKS          => 1;          # First Week
-use constant HOURS          => '19.50';    # 19:30 7.30pm
+use constant HOURS          => '19';    
+use constant MINUTES        => '30';   
 use constant WEEK_START_DAY => '1tu';      # First Tuesday of the Month
 
 =head1 NAME
 
-Acme::PM::Frankfurt::Meetings - get the next date of the Frankfurt PM meeting 
+Acme::PM::Frankfurt::Meetings - Get the next date(s) of the Frankfurt PM meeting 
 
 =head1 VERSION
 
-Version 0.11
+Version 0.13
 
 =cut
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 =head1 SYNOPSIS
 
@@ -46,8 +47,9 @@ our $VERSION = '0.12';
     print join("\n", next_meeting(3) ), "\n";
 
 
-=head1 SUBROUTINES/METHODS
+=head1 SUBROUTINES
 
+Nothing is imported/exported by default.
 
 =head2 next_meeting
 
@@ -62,7 +64,7 @@ our $VERSION = '0.12';
  my @dates = next_meeting(3);
 
  foreach my $date (@dates) {
-    print "Frankfurt.pm meeting:  $date\n";
+    print "Frankfurt.pm meeting: $date\n";
  }
 
 
@@ -86,6 +88,7 @@ sub _next_meeting_dt {
         days           => DAYS,
         weeks          => WEEKS,
         hours          => HOURS,
+        minutes        => MINUTES,
         week_start_day => WEEK_START_DAY,
     );
     my $dt_next = $monthly_set->next($dt);
@@ -152,7 +155,7 @@ Heavily inspired by Acme::PM::Berlin::Meetings L<http://search.cpan.org/perldoc?
 
 =over 4
 
-=item *  Frankfurt.pm L<http://www.frankfurt-pm.org/>
+=item * Frankfurt.pm L<http://www.frankfurt-pm.org/>
 
 =back 
 
