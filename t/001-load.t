@@ -11,5 +11,4 @@ my @subs = qw/next_meeting/;
 foreach my $sub ( @subs ) {
 	can_ok( 'Acme::PM::Frankfurt::Meetings', $sub);	
 }
-
 diag( "Testing Acme::PM::Frankfurt::Meetings $Acme::PM::Frankfurt::Meetings::VERSION, Perl $], $^X" );

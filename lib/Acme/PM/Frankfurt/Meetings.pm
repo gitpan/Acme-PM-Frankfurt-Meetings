@@ -16,8 +16,8 @@ use DateTime::Event::Recurrence;
 ##################################################
 use constant DAYS           => 2;          # Tuesday
 use constant WEEKS          => 1;          # First Week
-use constant HOURS          => '19';    
-use constant MINUTES        => '30';   
+use constant HOURS          => 19;    
+use constant MINUTES        => 30;   
 use constant WEEK_START_DAY => '1tu';      # First Tuesday of the Month
 
 =head1 NAME
@@ -26,11 +26,11 @@ Acme::PM::Frankfurt::Meetings - Get the next date(s) of the Frankfurt PM meeting
 
 =head1 VERSION
 
-Version 0.13
+Version 0.14
 
 =cut
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 =head1 SYNOPSIS
 
@@ -53,6 +53,12 @@ Nothing is imported/exported by default.
 
 =head2 next_meeting
 
+Computes the date(s) of the next meetings. 
+
+Accepts a count for the number of dates returned (defaults to 1 - next meeting).
+
+Returns an array of DateTime Objects in list context and a single Object in scalar context.
+
 
  use Acme::PM::Frankfurt::Meetings qw/next_meeting/;
 
@@ -63,17 +69,25 @@ Nothing is imported/exported by default.
  # Next three meetings
  my @dates = next_meeting(3);
 
- foreach my $date (@dates) {
+ foreach my $date ( @dates ) {
     print "Frankfurt.pm meeting: $date\n";
  }
 
+ # $dt is a DateTime Object
+ my $dt = next_meeting;
+
+ my $ymd = $dt->ymd('/');
+ print "$ymd\n";
+ my $hms  = $dt->hms; 
+ print "$hms\n";
 
 =cut
 
 sub next_meeting {
     my $count = shift || 1;
     my $dt = DateTime->now( time_zone => 'Europe/Berlin' );
-    map { $dt = _next_meeting_dt($dt) } ( 1 .. $count );
+    my @dates = map { $dt = _next_meeting_dt($dt) } ( 1 .. $count );
+    return wantarray ? @dates : $dates[0];
 }
 
 =head2 _next_meeting_dt
