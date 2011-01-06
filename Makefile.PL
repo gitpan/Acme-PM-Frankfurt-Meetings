@@ -8,7 +8,8 @@ license 'perl';
 configure_requires 'ExtUtils::MakeMaker' => '6.56';
 
 build_requires 'ExtUtils::MakeMaker' => '6.56';
-build_requires 'Test::More'          => '0';
+
+test_requires  'Test::More'          => '0';
 
 requires 'DateTime'                              => '0.66';
 requires 'DateTime::Event::Recurrence'           => '0.16';

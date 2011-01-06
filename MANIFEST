@@ -23,6 +23,9 @@ t/000-prerequisite.t
 t/001-load.t
 t/002-count.t
 t/003-datetime.t
+t/004-die.t
+t/993-compile-pm.t
+t/994-compile.pl.t
 t/995-boilerplate.t
 t/996-pod.t
 t/997-pod-coverage.t

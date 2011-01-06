@@ -1,5 +1,11 @@
 Revision history for Acme-PM-Frankfurt-Meetings
 
+0.15   2011/01/6/time
+       next_meeting() dies on negative or non numeric arguments to next_meeting()
+       Added Test::Exception Tests
+       Added Test::Compile Tests
+       Fixed typos in documentation
+
 0.14   2010/12/21/time
        Added wantarray to return single dates
        Added examples for DateTime Objects

@@ -14,11 +14,11 @@ use DateTime::Event::Recurrence;
 #################################################
 ## Every first Tuesday 7.30 pm (19:30 Uhr)
 ##################################################
-use constant DAYS           => 2;          # Tuesday
-use constant WEEKS          => 1;          # First Week
-use constant HOURS          => 19;    
-use constant MINUTES        => 30;   
-use constant WEEK_START_DAY => '1tu';      # First Tuesday of the Month
+use constant DAYS           => 2;        # Tuesday
+use constant WEEKS          => 1;        # First Week
+use constant HOURS          => 19;
+use constant MINUTES        => 30;
+use constant WEEK_START_DAY => '1tu';    # First Tuesday of the Month
 
 =head1 NAME
 
@@ -26,11 +26,11 @@ Acme::PM::Frankfurt::Meetings - Get the next date(s) of the Frankfurt PM meeting
 
 =head1 VERSION
 
-Version 0.14
+Version 0.15
 
 =cut
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 =head1 SYNOPSIS
 
@@ -46,6 +46,15 @@ our $VERSION = '0.14';
 
     print join("\n", next_meeting(3) ), "\n";
 
+    # $dt is a DateTime Object
+    my $dt = next_meeting;
+
+    my $ymd = $dt->ymd('/');
+    print "$ymd\n";
+
+    my $hms  = $dt->hms; 
+    print "$hms\n";
+
 
 =head1 SUBROUTINES
 
@@ -57,7 +66,10 @@ Computes the date(s) of the next meetings.
 
 Accepts a count for the number of dates returned (defaults to 1 - next meeting).
 
-Returns an array of DateTime Objects in list context and a single Object in scalar context.
+Dies on non positive integer counts.
+
+Returns an array of DateTime objects in list context and a single object in scalar context.
+
 
 
  use Acme::PM::Frankfurt::Meetings qw/next_meeting/;
@@ -84,7 +96,10 @@ Returns an array of DateTime Objects in list context and a single Object in scal
 =cut
 
 sub next_meeting {
-    my $count = shift || 1;
+    my $count = shift;
+    $count = 1 unless defined $count;
+    die "Gimme a number" unless $count =~ m/^\d+$/;
+    die "Gimme a positive integer" if $count < 1;
     my $dt = DateTime->now( time_zone => 'Europe/Berlin' );
     my @dates = map { $dt = _next_meeting_dt($dt) } ( 1 .. $count );
     return wantarray ? @dates : $dates[0];
@@ -176,7 +191,7 @@ Heavily inspired by Acme::PM::Berlin::Meetings L<http://search.cpan.org/perldoc?
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 Thomas Fahle.
+Copyright 2010,2011 Thomas Fahle.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
