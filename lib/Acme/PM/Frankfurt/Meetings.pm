@@ -26,11 +26,11 @@ Acme::PM::Frankfurt::Meetings - Get the next date(s) of the Frankfurt PM meeting
 
 =head1 VERSION
 
-Version 0.15
+Version 0.16
 
 =cut
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 =head1 SYNOPSIS
 
@@ -40,9 +40,9 @@ our $VERSION = '0.15';
 
     use Acme::PM::Frankfurt::Meetings qw/next_meeting/;
 
-    print "Next Frankfurt.pm Meeting: ", next_meeting(1) , "\n";
+    print "Next Frankfurt.pm meeting: ", next_meeting(1) , "\n";
 
-    print "Next 3  Frankfurt.pm Meetings:\n";
+    print "Next 3 Frankfurt.pm meetings:\n";
 
     print join("\n", next_meeting(3) ), "\n";
 

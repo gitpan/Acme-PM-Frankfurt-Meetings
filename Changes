@@ -1,5 +1,10 @@
 Revision history for Acme-PM-Frankfurt-Meetings
 
+0.16   2011/10/09/time
+       Fixed 004-die.t to adress "You tried to plan twice at t/004-die.t"
+       http://www.cpantesters.org/cpan/report/dc913284-d1ae-11e0-9371-de1d98826ac4 
+       Fixed typos in documentation
+
 0.15   2011/01/6/time
        next_meeting() dies on negative or non numeric arguments to next_meeting()
        Added Test::Exception Tests
@@ -15,8 +20,8 @@ Revision history for Acme-PM-Frankfurt-Meetings
        RTFM
        -use constant HOURS          => '19.50';
 
-       +use constant HOURS          => '19';    
-       +use constant MINUTES        => '30';   
+       +use constant HOURS          => '19';
+       +use constant MINUTES        => '30';
 
 0.12   2010/12/16/time
        Correct Time (7.30 pm) 
