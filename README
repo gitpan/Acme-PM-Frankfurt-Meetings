@@ -1,45 +1,124 @@
-Acme-PM-Frankfurt-Meetings
+NAME
+    Acme::PM::Frankfurt::Meetings - Get the next date(s) of the Frankfurt PM
+    meeting
 
-Get the next date(s) of the Frankfurt (Frankurt/Main/Germany) PM monthly meeting
+VERSION
+    Version 0.17
 
-INSTALLATION
+SYNOPSIS
+        use strict;
 
-To install this module, run the following commands:
+        use warnings;
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+        use Acme::PM::Frankfurt::Meetings qw/next_meeting/;
 
-SUPPORT AND DOCUMENTATION
+        print "Next Frankfurt.pm meeting: ", next_meeting(1) , "\n";
 
-After installing, you can find documentation for this module with the
-perldoc command.
+        print "Next 3 Frankfurt.pm meetings:\n";
 
-    perldoc Acme::PM::Frankfurt::Meetings
+        print join("\n", next_meeting(3) ), "\n";
 
-You can also look for information at:
+        # $dt is a DateTime Object
+        my $dt = next_meeting;
 
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Acme-PM-Frankfurt-Meetings
+        my $ymd = $dt->ymd('/');
+        print "$ymd\n";
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Acme-PM-Frankfurt-Meetings
+        my $hms  = $dt->hms; 
+        print "$hms\n";
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Acme-PM-Frankfurt-Meetings
+SUBROUTINES
+    Nothing is imported/exported by default.
 
-    Search CPAN
-        http://search.cpan.org/dist/Acme-PM-Frankfurt-Meetings/
+  next_meeting
+    Computes the date(s) of the next meetings.
 
+    Accepts a count for the number of dates returned (defaults to 1 - next
+    meeting).
+
+    Dies on non positive integer counts.
+
+    Returns an array of DateTime objects in list context and a single object
+    in scalar context.
+
+     use Acme::PM::Frankfurt::Meetings qw/next_meeting/;
+
+     # Next meeting
+     # List Context
+     print "Next Frankfurt.pm meeting:  ", next_meeting, "\n";
+
+     # Next three meetings
+     my @dates = next_meeting(3);
+
+     foreach my $date ( @dates ) {
+        print "Frankfurt.pm meeting: $date\n";
+     }
+
+     # $dt is a DateTime Object
+     my $dt = next_meeting;
+
+     my $ymd = $dt->ymd('/');
+     print "$ymd\n";
+     my $hms  = $dt->hms; 
+     print "$hms\n";
+
+  _next_meeting_dt
+    Internal only - computes the next set
+
+PREREQUISITES
+    *   DateTime <http://search.cpan.org/perldoc?DateTime>
+
+    *   DateTime::Event::Recurrence
+        <http://search.cpan.org/perldoc?DateTime::Event::Recurrence>
+
+AUTHOR
+    Thomas Fahle, "<cpan at thomas-fahle.de>"
+
+BUGS
+    Please report any bugs or feature requests to
+    "bug-acme-pm-frankfurt-meetings at rt.cpan.org", or through the web
+    interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Acme-PM-Frankfurt-Meetin
+    gs>. I will be notified, and then you'll automatically be notified of
+    progress on your bug as I make changes.
+
+SUPPORT
+    You can find documentation for this module with the perldoc command.
+
+        perldoc Acme::PM::Frankfurt::Meetings
+
+    You can also look for information at:
+
+    *   RT: CPAN's request tracker
+
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Acme-PM-Frankfurt-Meetings
+        >
+
+    *   AnnoCPAN: Annotated CPAN documentation
+
+        <http://annocpan.org/dist/Acme-PM-Frankfurt-Meetings>
+
+    *   CPAN Ratings
+
+        <http://cpanratings.perl.org/d/Acme-PM-Frankfurt-Meetings>
+
+    *   Search CPAN
+
+        <http://search.cpan.org/dist/Acme-PM-Frankfurt-Meetings/>
+
+ACKNOWLEDGEMENTS
+    Heavily inspired by Acme::PM::Berlin::Meetings
+    <http://search.cpan.org/perldoc?Acme::PM::Berlin::Meetings>
+
+SEE ALSO
+    *   Frankfurt.pm <http://www.frankfurt-pm.org/>
 
 LICENSE AND COPYRIGHT
+    Copyright 2010, 2011 Thomas Fahle.
 
-Copyright (C) 2010 Thomas Fahle
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of either: the GNU General Public License as published
+    by the Free Software Foundation; or the Artistic License.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
+    See http://dev.perl.org/licenses/ for more information.
 

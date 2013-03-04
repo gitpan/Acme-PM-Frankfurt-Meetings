@@ -26,11 +26,11 @@ Acme::PM::Frankfurt::Meetings - Get the next date(s) of the Frankfurt PM meeting
 
 =head1 VERSION
 
-Version 0.16
+Version 0.17
 
 =cut
 
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 
 =head1 SYNOPSIS
 
@@ -191,7 +191,7 @@ Heavily inspired by Acme::PM::Berlin::Meetings L<http://search.cpan.org/perldoc?
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010,2011 Thomas Fahle.
+Copyright 2010, 2011 Thomas Fahle.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

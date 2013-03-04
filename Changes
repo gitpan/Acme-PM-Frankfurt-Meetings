@@ -1,5 +1,10 @@
 Revision history for Acme-PM-Frankfurt-Meetings
 
+
+0.17   2013/03/04/time
+       Removed MYMETA.yml and MYMETA.json
+       See http://weblog.bulknews.net/post/44251476706/stop-shipping-mymeta-to-cpan
+
 0.16   2011/10/09/time
        Fixed 004-die.t to adress "You tried to plan twice at t/004-die.t"
        http://www.cpantesters.org/cpan/report/dc913284-d1ae-11e0-9371-de1d98826ac4 
