@@ -1,6 +1,9 @@
 Revision history for Acme-PM-Frankfurt-Meetings
 
 
+0.20   2014/04/08/time
+       Marked module as unmaintained
+
 0.18   2013/03/06/time
        Removed Reminder Stuff to fix
        - x86_64-linux / 5.10.1:

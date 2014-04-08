@@ -1,16 +1,15 @@
 ---
 abstract: 'Get the next date(s) of the Frankfurt PM meeting '
 author:
-  - 'Thomas Fahle, C<< <cpan at thomas-fahle.de> >>'
-  - 'Thomas Fahle <cpan@thomas-fahle.de>'
+  - 'Thomas Fahle, C<< <cpan at thomas-fahle.de> >>, Thomas Fahle <cpan@thomas-fahle.de>'
 build_requires:
   ExtUtils::MakeMaker: 6.36
   Test::More: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.36
+  ExtUtils::MakeMaker: 0
 distribution_type: module
-dynamic_config: 1
-generated_by: 'Module::Install version 1.06'
+dynamic_config: 0
+generated_by: 'ExtUtils::MakeMaker version 6.57_05'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -18,13 +17,9 @@ meta-spec:
 name: Acme-PM-Frankfurt-Meetings
 no_index:
   directory:
-    - examples
-    - inc
     - t
+    - inc
 requires:
   DateTime: 0.66
   DateTime::Event::Recurrence: 0.16
-resources:
-  license: http://dev.perl.org/licenses/
-  repository: https://github.com/tomfahle/Acme-PM-Frankfurt-Meetings
-version: 0.18
+version: 0.20

@@ -3,7 +3,12 @@ NAME
     meeting
 
 VERSION
-    Version 0.18
+    Version 0.20
+
+UNMAINTENED MODULE
+    This module is unmaintained and open to takeover.
+
+    You may adopt it without prior confirmation.
 
 SYNOPSIS
         use strict;
@@ -114,8 +119,6 @@ SEE ALSO
     *   Frankfurt.pm <http://www.frankfurt-pm.org/>
 
 LICENSE AND COPYRIGHT
-    Copyright 2010, 2011 Thomas Fahle.
-
     This program is free software; you can redistribute it and/or modify it
     under the terms of either: the GNU General Public License as published
     by the Free Software Foundation; or the Artistic License.
